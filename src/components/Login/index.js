@@ -1,6 +1,8 @@
 import {useState, useContext} from 'react'
 import {useHistory} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import ThemeContext from '../ThemeContext'
+
 import {
   LoginContainer,
   FormContainer,
@@ -21,17 +23,12 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
-  const history = useHistory() // replaced useNavigate
-  console.log("login");
+  const history = useHistory()
 
   const handleSubmit = async e => {
     e.preventDefault()
 
-    const userDetails = {
-      username,
-      password,
-    }
-
+    const userDetails = {username, password}
     const options = {
       method: 'POST',
       body: JSON.stringify(userDetails),
@@ -42,9 +39,8 @@ const Login = () => {
 
     if (response.ok) {
       const {jwt_token: jwtToken} = data
-      localStorage.setItem('jwt_token', jwtToken)
-
-      history.replace('/') // replaced navigate('/')
+      Cookies.set('jwt_token', jwtToken, {expires: 30})
+      history.replace('/')
     } else {
       setErrorMsg(data.error_msg)
     }
