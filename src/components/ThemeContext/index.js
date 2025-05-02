@@ -1,4 +1,3 @@
-// components/ThemeContext/index.js
 import {createContext, useState} from 'react'
 
 const ThemeContext = createContext()
@@ -6,7 +5,7 @@ const ThemeContext = createContext()
 export const ThemeProvider = ({children}) => {
   const [isDarkTheme, setIsDarkTheme] = useState(false)
   const [savedVideos, setSavedVideos] = useState([])
-  console.log("theme loaded");
+
   const toggleTheme = () => {
     setIsDarkTheme(prevTheme => !prevTheme)
   }
@@ -14,9 +13,7 @@ export const ThemeProvider = ({children}) => {
   const addVideoToSaved = video => {
     setSavedVideos(prevVideos => {
       const videoExists = prevVideos.find(item => item.id === video.id)
-      if (videoExists) {
-        return prevVideos
-      }
+      if (videoExists) return prevVideos
       return [...prevVideos, video]
     })
   }
@@ -27,6 +24,15 @@ export const ThemeProvider = ({children}) => {
     )
   }
 
+  const toggleSaveVideo = video => {
+    const isAlreadySaved = savedVideos.find(item => item.id === video.id)
+    if (isAlreadySaved) {
+      removeVideoFromSaved(video.id)
+    } else {
+      addVideoToSaved(video)
+    }
+  }
+
   return (
     <ThemeContext.Provider
       value={{
@@ -35,6 +41,7 @@ export const ThemeProvider = ({children}) => {
         savedVideos,
         addVideoToSaved,
         removeVideoFromSaved,
+        toggleSaveVideo,
       }}
     >
       {children}

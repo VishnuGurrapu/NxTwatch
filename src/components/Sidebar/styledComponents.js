@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
-export const SidebarContainer = styled.div`
+export const SidebarWrapper = styled.div`
   background-color: ${props => (props.isDarkTheme ? '#212121' : '#f9f9f9')};
   width: 250px;
   min-height: 100vh;
@@ -10,6 +10,12 @@ export const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Full screen height */
+  flex-shrink: 0; /* Sidebar doesn't shrink when screen is small */
+  overflow-y: auto; /* If sidebar content is large, it scrolls inside itself */
+
 `
 
 export const NavLinksList = styled.ul`

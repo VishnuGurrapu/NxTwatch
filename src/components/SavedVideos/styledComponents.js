@@ -1,4 +1,4 @@
-// components/SavedVideos/styledComponents.js
+// src/components/SavedVideos/styledComponents.js
 import styled from 'styled-components'
 
 export const SavedVideosContainer = styled.div`
@@ -12,11 +12,6 @@ export const SavedVideosContent = styled.div`
   padding: 20px;
   background-color: ${props => (props.isDarkTheme ? '#181818' : '#ffffff')};
   color: ${props => (props.isDarkTheme ? '#ffffff' : '#000000')};
-`
-
-export const SavedVideosHeading = styled.h1`
-  font-size: 24px;
-  margin-bottom: 20px;
 `
 
 export const SavedVideoList = styled.ul`
@@ -44,13 +39,6 @@ export const Channel = styled.p`
   margin: 0;
   color: ${props => (props.isDarkTheme ? '#cccccc' : '#606060')};
 `
-
-export const ViewsAndDate = styled.p`
-  margin: 4px 0;
-  font-size: 14px;
-  color: ${props => (props.isDarkTheme ? '#aaaaaa' : '#888888')};
-`
-// Add these to styledComponents.js
 
 export const NoVideosContainer = styled.div`
   text-align: center;

@@ -1,6 +1,7 @@
 // components/Header/index.js
 import {useContext} from 'react'
 import {FaMoon, FaSun} from 'react-icons/fa'
+
 import ThemeContext from '../ThemeContext'
 
 import {
@@ -14,8 +15,7 @@ import {
 
 const Header = () => {
   const {isDarkTheme, toggleTheme} = useContext(ThemeContext)
-  console.log("header");
-
+  console.log('header')
 
   const websiteLogoUrl = isDarkTheme
     ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'

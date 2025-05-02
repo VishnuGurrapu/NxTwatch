@@ -7,7 +7,7 @@ import {MdPlaylistAdd} from 'react-icons/md'
 
 import ThemeContext from '../ThemeContext'
 import {
-  SidebarContainer,
+  SidebarWrapper,
   NavLinksList,
   NavLinkItem,
   NavLink,
@@ -22,7 +22,7 @@ const Sidebar = () => {
   const {isDarkTheme} = useContext(ThemeContext)
 
   return (
-    <SidebarContainer isDarkTheme={isDarkTheme}>
+    <SidebarWrapper isDarkTheme={isDarkTheme}>
       <NavLinksList>
         <NavLinkItem>
           <NavLink to="/" isDarkTheme={isDarkTheme}>
@@ -70,7 +70,7 @@ const Sidebar = () => {
           Enjoy! Now to see your channels and recommendations!
         </ContactNote>
       </ContactSection>
-    </SidebarContainer>
+    </SidebarWrapper>
   )
 }
 

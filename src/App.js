@@ -19,12 +19,12 @@ const App = () => (
     <ErrorBoundary>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/login" component={Login} />
-          <ProtectedRoute exact path="/" component={Home} />
-          <ProtectedRoute exact path="/trending" component={Trending} />
-          <ProtectedRoute exact path="/gaming" component={Gaming} />
-          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
-          <ProtectedRoute exact path="/videos/:id" component={VideoDetails} />
+          <Route exact path='/login' component={Login} />
+          <ProtectedRoute exact path='/' component={Home} />
+          <ProtectedRoute exact path='/trending' component={Trending} />
+          <ProtectedRoute exact path='/gaming' component={Gaming} />
+          <ProtectedRoute exact path='/saved-videos' component={SavedVideos} />
+          <ProtectedRoute exact path='/videos/:id' component={VideoDetails} />
           <Route render={() => <h1>404: Page not found</h1>} />
         </Switch>
       </BrowserRouter>
@@ -32,7 +32,7 @@ const App = () => (
   </ThemeProvider>
 )
 
-export default App;
+export default App
 
 //  import NotFound from './components/NotFound'
 //  <BrowserRouter>

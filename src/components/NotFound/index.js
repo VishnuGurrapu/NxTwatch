@@ -10,8 +10,7 @@ import {
 
 const NotFound = () => {
   const {isDarkTheme} = useContext(ThemeContext)
-  console.log("notfound");
-
+  console.log('notfound')
 
   const notFoundImageUrl = isDarkTheme
     ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'

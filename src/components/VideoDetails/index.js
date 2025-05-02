@@ -4,8 +4,10 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {AiOutlineLike, AiOutlineDislike, AiOutlineSave} from 'react-icons/ai'
 import {formatDistanceToNow} from 'date-fns'
+
 import {
   VideoDetailsContainer,
+  VideoBody,
   VideoContent,
   Title,
   InfoRow,
@@ -17,7 +19,12 @@ import {
   ChannelLogo,
   ChannelName,
   Description,
+  LoaderContainer,
+  FailureContainer,
+  FailureHeading,
+  FailureText,
 } from './styledComponents'
+
 import Header from '../Header'
 import Sidebar from '../Sidebar'
 import ThemeContext from '../ThemeContext'
@@ -30,7 +37,6 @@ class VideoDetails extends Component {
     isLiked: false,
     isDisliked: false,
   }
-  
 
   componentDidMount() {
     this.fetchVideoDetails()
@@ -47,7 +53,6 @@ class VideoDetails extends Component {
         Authorization: `Bearer ${jwtToken}`,
       },
     }
-    console.log("videoDetails loaded");
 
     const response = await fetch(url, options)
     if (response.ok) {
@@ -95,16 +100,20 @@ class VideoDetails extends Component {
           }
 
           const renderLoader = () => (
-            <div className="loader-container" data-testid="loader">
+            <LoaderContainer data-testid="loader">
               <Loader type="ThreeDots" color="#0b69ff" height={50} width={50} />
-            </div>
+            </LoaderContainer>
           )
 
           const renderFailure = () => (
-            <div>
-              <h1>Failed to load video</h1>
-              <p>Try again</p>
-            </div>
+            <FailureContainer>
+              <FailureHeading dark={isDarkTheme}>
+                Failed to load video
+              </FailureHeading>
+              <FailureText dark={isDarkTheme}>
+                Please try again later.
+              </FailureText>
+            </FailureContainer>
           )
 
           const renderVideo = () => {
@@ -158,14 +167,16 @@ class VideoDetails extends Component {
           }
 
           return (
-            <VideoDetailsContainer>
+            <VideoDetailsContainer dark={isDarkTheme}>
               <Header />
-              <Sidebar />
-              {(() => {
-                if (isLoading) return renderLoader()
-                if (isError) return renderFailure()
-                return renderVideo()
-              })()}
+              <VideoBody>
+                <Sidebar />
+                {isLoading
+                  ? renderLoader()
+                  : isError
+                  ? renderFailure()
+                  : renderVideo()}
+              </VideoBody>
             </VideoDetailsContainer>
           )
         }}
