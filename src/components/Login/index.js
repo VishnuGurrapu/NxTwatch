@@ -43,8 +43,8 @@ const Login = () => {
     const data = await response.json()
 
     if (response.ok) {
-      const {jwt_token: jwtToken} = data
-      Cookies.set('jwt_token', jwtToken, {expires: 30})
+      const {jwt_token: token} = data
+      Cookies.set('jwt_token', token, {expires: 30})
       history.replace('/')
     } else {
       setErrorMsg(data.error_msg)

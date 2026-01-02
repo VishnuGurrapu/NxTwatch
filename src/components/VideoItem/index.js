@@ -7,6 +7,7 @@ import {
   VideoTitle,
   ChannelName,
   ViewsAndDate,
+  VideoLink,
 } from './styledComponents'
 
 const VideoItem = ({videoDetails, isGaming}) => {
@@ -22,20 +23,20 @@ const VideoItem = ({videoDetails, isGaming}) => {
   if (isGaming) {
     return (
       <VideoItemContainer>
-        <Link to={`/videos/${id}`}>
+        <VideoLink to={`/videos/${id}`}>
           <VideoThumbnail src={thumbnailUrl} alt="video thumbnail" />
           <VideoDetails>
             <VideoTitle>{title}</VideoTitle>
             <ViewsAndDate>{viewCount} Watching Worldwide</ViewsAndDate>
           </VideoDetails>
-        </Link>
+        </VideoLink>
       </VideoItemContainer>
     )
   }
 
   return (
     <VideoItemContainer>
-      <Link to={`/videos/${id}`}>
+      <VideoLink to={`/videos/${id}`}>
         <VideoThumbnail src={thumbnailUrl} alt="video thumbnail" />
         <VideoDetails>
           {channel && (
@@ -49,7 +50,7 @@ const VideoItem = ({videoDetails, isGaming}) => {
             </ViewsAndDate>
           </div>
         </VideoDetails>
-      </Link>
+      </VideoLink>
     </VideoItemContainer>
   )
 }

@@ -187,11 +187,9 @@ class VideoDetails extends Component {
               <Header />
               <VideoBody>
                 <Sidebar />
-                {isLoading
-                  ? renderLoader()
-                  : isError
-                  ? renderFailure()
-                  : renderVideo()}
+                {isLoading && renderLoader()}
+                {isError && !isLoading && renderFailure()}
+                {!isLoading && !isError && renderVideo()}
               </VideoBody>
             </VideoDetailsContainer>
           )
