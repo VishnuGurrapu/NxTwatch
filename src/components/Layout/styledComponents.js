@@ -10,7 +10,7 @@ export const LayoutContainer = styled.div`
 export const LayoutMain = styled.div`
   display: flex;
   flex-grow: 1;
-  
+
   overflow: hidden;
 `
 

@@ -1,5 +1,5 @@
-import {useState, useContext} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useState, useContext, useEffect} from 'react'
+import {useHistory, Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import ThemeContext from '../ThemeContext'
 
@@ -24,6 +24,11 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const history = useHistory()
+
+  const jwtToken = Cookies.get('jwt_token')
+  if (jwtToken !== undefined) {
+    return <Redirect to="/" />
+  }
 
   const handleSubmit = async e => {
     e.preventDefault()

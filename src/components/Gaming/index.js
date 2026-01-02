@@ -1,5 +1,6 @@
 import {useContext, useEffect, useState} from 'react'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
 import ThemeContext from '../ThemeContext'
@@ -54,10 +55,18 @@ const Gaming = () => {
     fetchGamingVideos()
   }, [])
 
+  const onRetry = () => {
+    fetchGamingVideos()
+  }
+
   const renderVideos = () => {
     switch (apiStatus) {
       case apiStatusConstants.LOADING:
-        return <p>Loading...</p>
+        return (
+          <div className="loader-container" data-testid="loader">
+            <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+          </div>
+        )
       case apiStatusConstants.SUCCESS:
         return (
           <GamingVideosList>
@@ -67,7 +76,26 @@ const Gaming = () => {
           </GamingVideosList>
         )
       case apiStatusConstants.FAILURE:
-        return <p>Something went wrong. Please try again.</p>
+        return (
+          <div>
+            <img
+              src={
+                isDarkTheme
+                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+              }
+              alt="failure view"
+            />
+            <h1>Oops! Something Went Wrong</h1>
+            <p>
+              We are having some trouble to complete your request. Please try
+              again.
+            </p>
+            <button type="button" onClick={onRetry}>
+              Retry
+            </button>
+          </div>
+        )
       default:
         return null
     }
@@ -78,7 +106,7 @@ const Gaming = () => {
       <Header />
       <GamingContainer>
         <Sidebar />
-        <GamingContentContainer isDarkTheme={isDarkTheme}>
+        <GamingContentContainer isDarkTheme={isDarkTheme} data-testid="gaming">
           <GamingHeading>Gaming</GamingHeading>
           {renderVideos()}
         </GamingContentContainer>

@@ -43,6 +43,7 @@ class VideoDetails extends Component {
   }
 
   fetchVideoDetails = async () => {
+    this.setState({isLoading: true, isError: false})
     const {match} = this.props
     const {id} = match.params
     const jwtToken = Cookies.get('jwt_token')
@@ -107,12 +108,24 @@ class VideoDetails extends Component {
 
           const renderFailure = () => (
             <FailureContainer>
+              <img
+                src={
+                  isDarkTheme
+                    ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+                    : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+                }
+                alt="failure view"
+              />
               <FailureHeading dark={isDarkTheme}>
-                Failed to load video
+                Oops! Something Went Wrong
               </FailureHeading>
               <FailureText dark={isDarkTheme}>
-                Please try again later.
+                We are having some trouble to complete your request. Please try
+                again.
               </FailureText>
+              <button type="button" onClick={this.fetchVideoDetails}>
+                Retry
+              </button>
             </FailureContainer>
           )
 
@@ -167,7 +180,10 @@ class VideoDetails extends Component {
           }
 
           return (
-            <VideoDetailsContainer dark={isDarkTheme}>
+            <VideoDetailsContainer
+              dark={isDarkTheme}
+              data-testid="videoItemDetails"
+            >
               <Header />
               <VideoBody>
                 <Sidebar />

@@ -15,7 +15,6 @@ export const SidebarWrapper = styled.div`
   height: 100vh; /* Full screen height */
   flex-shrink: 0; /* Sidebar doesn't shrink when screen is small */
   overflow-y: auto; /* If sidebar content is large, it scrolls inside itself */
-
 `
 
 export const NavLinksList = styled.ul`

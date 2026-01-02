@@ -9,21 +9,43 @@ import {
   ViewsAndDate,
 } from './styledComponents'
 
-const VideoItem = ({videoDetails}) => {
-  const {id, title, thumbnailUrl, viewCount, publishedAt, channel} =
-    videoDetails
+const VideoItem = ({videoDetails, isGaming}) => {
+  const {
+    id,
+    title,
+    thumbnailUrl,
+    viewCount,
+    publishedAt,
+    channel,
+  } = videoDetails
+
+  if (isGaming) {
+    return (
+      <VideoItemContainer>
+        <Link to={`/videos/${id}`}>
+          <VideoThumbnail src={thumbnailUrl} alt="video thumbnail" />
+          <VideoDetails>
+            <VideoTitle>{title}</VideoTitle>
+            <ViewsAndDate>{viewCount} Watching Worldwide</ViewsAndDate>
+          </VideoDetails>
+        </Link>
+      </VideoItemContainer>
+    )
+  }
 
   return (
     <VideoItemContainer>
       <Link to={`/videos/${id}`}>
         <VideoThumbnail src={thumbnailUrl} alt="video thumbnail" />
         <VideoDetails>
-          <ChannelLogo src={channel.profileImageUrl} alt="channel logo" />
+          {channel && (
+            <ChannelLogo src={channel.profileImageUrl} alt="channel logo" />
+          )}
           <div>
             <VideoTitle>{title}</VideoTitle>
-            <ChannelName>{channel.name}</ChannelName>
+            {channel && <ChannelName>{channel.name}</ChannelName>}
             <ViewsAndDate>
-              {viewCount} views • {publishedAt}
+              {viewCount} views {publishedAt && `• ${publishedAt}`}
             </ViewsAndDate>
           </div>
         </VideoDetails>

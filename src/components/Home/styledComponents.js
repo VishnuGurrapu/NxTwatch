@@ -6,22 +6,18 @@ export const HomeContainer = styled.div`
   flex-direction: column; /* Header at top */
   background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
   min-height: 100vh;
-
 `
 
 export const MainContainer = styled.div`
   display: flex; /* Sidebar and HomeContent side-by-side */
   flex-grow: 1;
-
-
 `
 
 export const HomeContent = styled.div`
   flex-grow: 1;
   padding: 20px;
 
-overflow-y: auto;
-
+  overflow-y: auto;
 `
 
 export const Banner = styled.div`
@@ -52,11 +48,11 @@ export const BannerCloseBtn = styled.button`
 
 export const VideosContainer = styled.div`
   margin-top: 20px;
-    display: flex;
+  display: flex;
 `
 export const VideosListContainer = styled.div`
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 `
 
 export const SearchContainer = styled.div`

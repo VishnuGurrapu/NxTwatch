@@ -1,5 +1,6 @@
 import {useContext, useEffect, useState} from 'react'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import ThemeContext from '../ThemeContext'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
@@ -60,10 +61,18 @@ const Trending = () => {
     fetchTrendingVideos()
   }, [])
 
+  const onRetry = () => {
+    fetchTrendingVideos()
+  }
+
   const renderVideos = () => {
     switch (apiStatus) {
       case apiStatusConstants.LOADING:
-        return <p>Loading...</p>
+        return (
+          <div className="loader-container" data-testid="loader">
+            <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+          </div>
+        )
       case apiStatusConstants.SUCCESS:
         return (
           <TrendingVideosList>
@@ -73,7 +82,26 @@ const Trending = () => {
           </TrendingVideosList>
         )
       case apiStatusConstants.FAILURE:
-        return <p>Failed to load trending videos.</p>
+        return (
+          <div>
+            <img
+              src={
+                isDarkTheme
+                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+              }
+              alt="failure view"
+            />
+            <h1>Oops! Something Went Wrong</h1>
+            <p>
+              We are having some trouble to complete your request. Please try
+              again.
+            </p>
+            <button type="button" onClick={onRetry}>
+              Retry
+            </button>
+          </div>
+        )
       default:
         return null
     }
@@ -84,7 +112,7 @@ const Trending = () => {
       <Header />
       <TrendingContainer>
         <Sidebar />
-        <ContentContainer isDarkTheme={isDarkTheme}>
+        <ContentContainer isDarkTheme={isDarkTheme} data-testid="trending">
           <TrendingHeading>Trending</TrendingHeading>
           {renderVideos()}
         </ContentContainer>

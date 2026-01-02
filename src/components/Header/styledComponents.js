@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const HeaderContainer = styled.nav`
   background-color: ${props => (props.isDarkTheme ? '#181818' : '#ffffff')};
   display: flex;
-  width:100%;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;

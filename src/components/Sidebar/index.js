@@ -63,7 +63,7 @@ const Sidebar = () => {
           />
           <SocialIcon
             src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-            alt="linked in logo"
+            alt="linkedin logo"
           />
         </SocialIconsContainer>
         <ContactNote isDarkTheme={isDarkTheme}>

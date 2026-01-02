@@ -63,7 +63,10 @@ class SavedVideos extends Component {
               <Header />
               <SavedVideosContainer isDarkTheme={isDarkTheme}>
                 <Sidebar />
-                <SavedVideosContent isDarkTheme={isDarkTheme}>
+                <SavedVideosContent
+                  isDarkTheme={isDarkTheme}
+                  data-testid="savedVideos"
+                >
                   {this.renderVideos(savedVideos)}
                 </SavedVideosContent>
               </SavedVideosContainer>

@@ -7,13 +7,13 @@ export const VideoItemContainer = styled.li`
   flex-direction: column;
   width: 100%;
   margin-bottom: 20px;
-  min-width:280px;
-  
+  min-width: 280px;
+
   @media screen and (min-width: 576px) {
     width: 45%;
     margin-right: 10px;
   }
-  
+
   @media screen and (min-width: 768px) {
     width: 30%;
     margin-right: 15px;
@@ -60,7 +60,7 @@ export const ViewsAndDate = styled.div`
   display: flex;
   font-size: 12px;
   color: ${props => (props.isDark ? '#d7dfe9' : '#475569')};
-  
+
   & > span {
     margin: 0 5px;
   }
