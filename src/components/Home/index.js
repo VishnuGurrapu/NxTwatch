@@ -106,6 +106,9 @@ const Home = () => {
             />
             <h1>No Search results found</h1>
             <p>Try different key words or remove search filter</p>
+            <button type="button" onClick={onRetry}>
+              Retry
+            </button>
           </div>
         )
       case apiStatusConstants.FAILURE:

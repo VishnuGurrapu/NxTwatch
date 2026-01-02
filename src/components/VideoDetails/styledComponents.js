@@ -21,8 +21,9 @@ export const VideoContent = styled.div`
   color: ${props => (props.dark ? '#ffffff' : '#000000')};
 `
 
-export const Title = styled.h1`
+export const Title = styled.p`
   font-size: 22px;
+  font-weight: bold;
   margin-top: 16px;
   margin-bottom: 12px;
   line-height: 1.4;
@@ -38,9 +39,13 @@ export const InfoRow = styled.div`
   margin-bottom: 8px;
 `
 
-export const Views = styled.span``
+export const Views = styled.p`
+  margin: 0;
+`
 
-export const DateText = styled.span``
+export const DateText = styled.p`
+  margin: 0;
+`
 
 export const ActionRow = styled.div`
   display: flex;

@@ -56,10 +56,11 @@ export const ChannelName = styled.p`
   margin: 0;
 `
 
-export const ViewsAndDate = styled.div`
+export const ViewsAndDate = styled.p`
   display: flex;
   font-size: 12px;
   color: ${props => (props.isDark ? '#d7dfe9' : '#475569')};
+  margin: 0;
 
   & > span {
     margin: 0 5px;

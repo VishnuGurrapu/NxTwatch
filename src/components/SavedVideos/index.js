@@ -1,5 +1,6 @@
 // src/components/SavedVideos/index.js
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import ThemeContext from '../ThemeContext'
 import Header from '../Header'
@@ -41,11 +42,18 @@ class SavedVideos extends Component {
       <SavedVideoList>
         {savedVideos.map(video => (
           <SavedVideoItem key={video.id}>
-            <Thumbnail src={video.thumbnailUrl} alt="video thumbnail" />
-            <VideoInfo>
-              <Title>{video.title}</Title>
-              <Channel>{video.channel.name}</Channel>
-            </VideoInfo>
+            <Link
+              to={`/videos/${video.id}`}
+              style={{textDecoration: 'none', display: 'flex', width: '100%'}}
+            >
+              <Thumbnail src={video.thumbnailUrl} alt="video thumbnail" />
+              <VideoInfo>
+                <Title>{video.title}</Title>
+                <Channel>{video.channel.name}</Channel>
+                <p>{video.viewCount} views</p>
+                <p>{video.publishedAt}</p>
+              </VideoInfo>
+            </Link>
           </SavedVideoItem>
         ))}
       </SavedVideoList>
@@ -67,6 +75,7 @@ class SavedVideos extends Component {
                   isDarkTheme={isDarkTheme}
                   data-testid="savedVideos"
                 >
+                  {savedVideos.length > 0 && <h1>Saved Videos</h1>}
                   {this.renderVideos(savedVideos)}
                 </SavedVideosContent>
               </SavedVideosContainer>

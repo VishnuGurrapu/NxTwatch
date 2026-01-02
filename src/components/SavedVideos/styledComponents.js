@@ -31,8 +31,10 @@ export const Thumbnail = styled.img`
 
 export const VideoInfo = styled.div``
 
-export const Title = styled.h3`
+export const Title = styled.p`
   margin: 0 0 8px 0;
+  font-weight: bold;
+  font-size: 18px;
 `
 
 export const Channel = styled.p`

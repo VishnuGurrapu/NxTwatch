@@ -16,7 +16,7 @@ export const MainContainer = styled.div`
 export const HomeContent = styled.div`
   flex-grow: 1;
   padding: 20px;
-
+  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9')};
   overflow-y: auto;
 `
 
@@ -50,9 +50,11 @@ export const VideosContainer = styled.div`
   margin-top: 20px;
   display: flex;
 `
-export const VideosListContainer = styled.div`
+export const VideosListContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
 `
 
 export const SearchContainer = styled.div`
